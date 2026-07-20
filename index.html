@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カフェマップ</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>カフェマップ</h1>
+    <p>行ってよかったカフェを地図に残して、みんなで共有するアプリ</p>
+  </header>
+
+  <main>
+    <section class="panel auth-panel">
+      <div>
+        <h2>ログイン</h2>
+        <p id="login-status">確認中...</p>
+      </div>
+
+      <form id="auth-form">
+        <input type="email" id="email" placeholder="メールアドレス" autocomplete="email">
+        <input type="password" id="password" placeholder="パスワード" autocomplete="current-password">
+        <div class="button-row">
+          <button type="button" id="signup-btn">新規登録</button>
+          <button type="button" id="login-btn">ログイン</button>
+          <button type="button" id="logout-btn">ログアウト</button>
+        </div>
+      </form>
+    </section>
+
+    <div id="setup-message" class="setup-message"></div>
+
+    <section class="map-layout">
+      <div id="map"></div>
+
+      <aside class="panel">
+        <h2>カフェ登録</h2>
+        <p class="hint">地図をクリックすると緯度・経度が入ります。</p>
+
+        <form id="cafe-form">
+          <input type="hidden" id="cafe-id">
+
+          <label>
+            カフェ名
+            <input type="text" id="name" required placeholder="例：町田駅前カフェ">
+          </label>
+
+          <label>
+            住所
+            <input type="text" id="address" required placeholder="例：東京都町田市...">
+          </label>
+
+          <div class="two-cols">
+            <label>
+              緯度
+              <input type="number" id="lat" step="0.000001" required>
+            </label>
+            <label>
+              経度
+              <input type="number" id="lng" step="0.000001" required>
+            </label>
+          </div>
+
+          <label>
+            営業時間
+            <input type="text" id="hours" placeholder="例：10:00-20:00">
+          </label>
+
+          <div class="three-cols">
+            <label>
+              Wifi
+              <select id="wifi">
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
+              </select>
+            </label>
+            <label>
+              電源
+              <select id="power">
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
+              </select>
+            </label>
+            <label>
+              駐車場
+              <select id="parking">
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            コメント
+            <textarea id="comment" rows="3" placeholder="雰囲気やおすすめポイント"></textarea>
+          </label>
+
+          <div class="button-row">
+            <button type="submit" id="save-btn">登録</button>
+            <button type="button" id="cancel-btn">入力をクリア</button>
+          </div>
+        </form>
+      </aside>
+    </section>
+
+    <section class="panel">
+      <h2>登録されたカフェ</h2>
+      <div id="cafe-list" class="cafe-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>
+    と
+    <a href="https://supabase.com/" target="_blank" rel="noopener">Supabase</a>
+    を使用
+  </footer>
+</body>
+</html>

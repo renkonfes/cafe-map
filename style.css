@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+  color: #333;
+  background: #f4f1ea;
+}
+
+header {
+  padding: 28px 16px;
+  text-align: center;
+  color: #fff;
+  background: #6f4e37;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+main {
+  width: min(1100px, 94vw);
+  margin: 20px auto;
+}
+
+.panel {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #ddd0bf;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.auth-panel {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.setup-message {
+  display: none;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #e0b34f;
+  border-radius: 8px;
+  background: #fff8d9;
+  line-height: 1.6;
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+#map {
+  min-height: 560px;
+  border: 1px solid #c8b79f;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px;
+  border: 1px solid #cfc2b2;
+  border-radius: 5px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  border: none;
+  color: #fff;
+  background: #6f4e37;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #563b2a;
+}
+
+button.secondary,
+#cancel-btn,
+#logout-btn {
+  background: #777;
+}
+
+.button-row,
+.two-cols,
+.three-cols {
+  display: grid;
+  gap: 8px;
+}
+
+.button-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.two-cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+.three-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hint {
+  margin-bottom: 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+.cafe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.cafe-card {
+  padding: 12px;
+  border: 1px solid #e3d6c5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cafe-card h3 {
+  margin: 0 0 6px;
+}
+
+.small {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.popup-actions button {
+  padding: 6px;
+  font-size: 12px;
+}
+
+.comment-box {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.comment-item {
+  margin: 4px 0;
+  padding: 5px;
+  background: #f7f3ed;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}
+
+@media (max-width: 800px) {
+  .auth-panel,
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #map {
+    min-height: 420px;
+  }
+
+  .button-row,
+  .two-cols,
+  .three-cols {
+    grid-template-columns: 1fr;
+  }
+}
