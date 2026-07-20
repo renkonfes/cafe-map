@@ -7,7 +7,7 @@ https://github.com/renkonfes/cafe-map
 https://renkonfes.github.io/cafe-map/
 
 ※ class.tama.net に置く場合
-https://class.tama.net/u/224c0494/cafe-map/
+https://class.tama.net/u/p224C0494/20260720/cafe-map/
 
 アピールポイント
 Leaflet.jsを使って、カフェの場所を地図上にピンで表示できるようにしました。
