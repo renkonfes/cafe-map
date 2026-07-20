@@ -1,0 +1,24 @@
+ここだけ後でやればOK
+
+1. Supabase
+   - supabase.com で新しいプロジェクトを作る
+   - SQL Editor に supabase_setup.sql の中身を貼って Run
+   - Authentication の Email 設定で Confirm email を OFF
+   - Project URL と Publishable key を config.js に貼る
+
+2. GitHub
+   - GitHubで cafe-map という public リポジトリを作る
+   - このフォルダで下のコマンドを実行する
+
+git remote add origin https://github.com/renkonfes/cafe-map.git
+git branch -M main
+git push -u origin main
+
+3. GitHub Pages
+   - GitHubの cafe-map リポジトリを開く
+   - Settings → Pages
+   - Branch を main、フォルダを /(root) にして Save
+   - 数分後に https://renkonfes.github.io/cafe-map/ を開く
+
+4. Moodle提出
+   - 提出用テキスト.txt の内容をMoodleに貼る
