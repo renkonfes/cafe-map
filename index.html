@@ -1,36 +1,36 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>繧ｫ繝輔ぉ繝槭ャ繝・/title>
+  <title>カフェマップ</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-  <script src="config.js?v=2" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <script src="config.js?v=3" defer></script>
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <header>
-    <h1>繧ｫ繝輔ぉ繝槭ャ繝・/h1>
-    <p>陦後▲縺ｦ繧医°縺｣縺溘き繝輔ぉ繧貞慍蝗ｳ縺ｫ谿九＠縺ｦ縲√∩繧薙↑縺ｧ蜈ｱ譛峨☆繧九い繝励Μ</p>
+    <h1>カフェマップ</h1>
+    <p>行ってよかったカフェを地図に残して、みんなで共有するアプリ</p>
   </header>
 
   <main>
     <section class="panel auth-panel">
       <div>
-        <h2>繝ｭ繧ｰ繧､繝ｳ</h2>
-        <p id="login-status">遒ｺ隱堺ｸｭ...</p>
+        <h2>ログイン</h2>
+        <p id="login-status">確認中...</p>
       </div>
 
       <form id="auth-form">
-        <input type="email" id="email" placeholder="繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ" autocomplete="email">
-        <input type="password" id="password" placeholder="繝代せ繝ｯ繝ｼ繝・ autocomplete="current-password">
+        <input type="email" id="email" placeholder="メールアドレス" autocomplete="email">
+        <input type="password" id="password" placeholder="パスワード" autocomplete="current-password">
         <div class="button-row">
-          <button type="button" id="signup-btn">譁ｰ隕冗匳骭ｲ</button>
-          <button type="button" id="login-btn">繝ｭ繧ｰ繧､繝ｳ</button>
-          <button type="button" id="logout-btn">繝ｭ繧ｰ繧｢繧ｦ繝・/button>
+          <button type="button" id="signup-btn">新規登録</button>
+          <button type="button" id="login-btn">ログイン</button>
+          <button type="button" id="logout-btn">ログアウト</button>
         </div>
       </form>
     </section>
@@ -41,87 +41,89 @@
       <div id="map"></div>
 
       <aside class="panel">
-        <h2>繧ｫ繝輔ぉ逋ｻ骭ｲ</h2>
-        <p class="hint">蝨ｰ蝗ｳ繧偵け繝ｪ繝・け縺吶ｋ縺ｨ邱ｯ蠎ｦ繝ｻ邨悟ｺｦ縺悟・繧翫∪縺吶・/p>
+        <h2>カフェ登録</h2>
+        <p class="hint">地図をクリックすると緯度・経度が入ります。</p>
 
         <form id="cafe-form">
           <input type="hidden" id="cafe-id">
 
           <label>
-            繧ｫ繝輔ぉ蜷・            <input type="text" id="name" required placeholder="萓具ｼ夂伴逕ｰ鬧・燕繧ｫ繝輔ぉ">
+            カフェ名
+            <input type="text" id="name" required placeholder="例：町田駅前カフェ">
           </label>
 
           <label>
-            菴乗園
-            <input type="text" id="address" required placeholder="萓具ｼ壽擲莠ｬ驛ｽ逕ｺ逕ｰ蟶・..">
+            住所
+            <input type="text" id="address" required placeholder="例：東京都町田市...">
           </label>
 
           <div class="two-cols">
             <label>
-              邱ｯ蠎ｦ
+              緯度
               <input type="number" id="lat" step="0.000001" required>
             </label>
             <label>
-              邨悟ｺｦ
+              経度
               <input type="number" id="lng" step="0.000001" required>
             </label>
           </div>
 
           <label>
-            蝟ｶ讌ｭ譎る俣
-            <input type="text" id="hours" placeholder="萓具ｼ・0:00-20:00">
+            営業時間
+            <input type="text" id="hours" placeholder="例：10:00-20:00">
           </label>
 
           <div class="three-cols">
             <label>
               Wifi
               <select id="wifi">
-                <option value="荳肴・">荳肴・</option>
-                <option value="縺ゅｊ">縺ゅｊ</option>
-                <option value="縺ｪ縺・>縺ｪ縺・/option>
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
               </select>
             </label>
             <label>
-              髮ｻ貅・              <select id="power">
-                <option value="荳肴・">荳肴・</option>
-                <option value="縺ゅｊ">縺ゅｊ</option>
-                <option value="縺ｪ縺・>縺ｪ縺・/option>
+              電源
+              <select id="power">
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
               </select>
             </label>
             <label>
-              鬧占ｻ雁ｴ
+              駐車場
               <select id="parking">
-                <option value="荳肴・">荳肴・</option>
-                <option value="縺ゅｊ">縺ゅｊ</option>
-                <option value="縺ｪ縺・>縺ｪ縺・/option>
+                <option value="不明">不明</option>
+                <option value="あり">あり</option>
+                <option value="なし">なし</option>
               </select>
             </label>
           </div>
 
           <label>
-            繧ｳ繝｡繝ｳ繝・            <textarea id="comment" rows="3" placeholder="髮ｰ蝗ｲ豌励ｄ縺翫☆縺吶ａ繝昴う繝ｳ繝・></textarea>
+            コメント
+            <textarea id="comment" rows="3" placeholder="雰囲気やおすすめポイント"></textarea>
           </label>
 
           <div class="button-row">
-            <button type="submit" id="save-btn">逋ｻ骭ｲ</button>
-            <button type="button" id="cancel-btn">蜈･蜉帙ｒ繧ｯ繝ｪ繧｢</button>
+            <button type="submit" id="save-btn">登録</button>
+            <button type="button" id="cancel-btn">入力をクリア</button>
           </div>
         </form>
       </aside>
     </section>
 
     <section class="panel">
-      <h2>逋ｻ骭ｲ縺輔ｌ縺溘き繝輔ぉ</h2>
+      <h2>登録されたカフェ</h2>
       <div id="cafe-list" class="cafe-list"></div>
     </section>
   </main>
 
   <footer>
     <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>
-    縺ｨ
+    と
     <a href="https://supabase.com/" target="_blank" rel="noopener">Supabase</a>
-    繧剃ｽｿ逕ｨ
+    を使用
   </footer>
 </body>
 </html>
-
