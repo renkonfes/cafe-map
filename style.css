@@ -185,6 +185,26 @@ button.secondary,
   font-size: 13px;
 }
 
+.coffee-pin {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #4b2f20;
+  background: #fff7e8;
+  border: 3px solid #6f4e37;
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transform: rotate(-45deg);
+}
+
+.coffee-pin span {
+  font-size: 17px;
+  line-height: 1;
+  transform: rotate(45deg);
+}
+
 footer {
   padding: 20px;
   text-align: center;

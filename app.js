@@ -3,6 +3,7 @@ let supabaseClient = null;
 let currentUser = null;
 let cafes = [];
 let markers = [];
+let coffeeIcon;
 
 const demoKey = "cafe_map_demo_data";
 
@@ -35,6 +36,14 @@ function showSetupMessage() {
 
 function initMap() {
   map = L.map("map").setView([35.5466, 139.4387], 13);
+  coffeeIcon = L.divIcon({
+    className: "",
+    html: '<div class="coffee-pin"><span>☕</span></div>',
+    iconSize: [34, 42],
+    iconAnchor: [17, 42],
+    popupAnchor: [0, -38]
+  });
+
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "© OpenStreetMap"
@@ -253,7 +262,7 @@ function renderMarkers() {
   markers = [];
 
   cafes.forEach((cafe) => {
-    const marker = L.marker([cafe.lat, cafe.lng]).addTo(map);
+    const marker = L.marker([cafe.lat, cafe.lng], { icon: coffeeIcon }).addTo(map);
     marker.bindPopup(makePopup(cafe));
     markers.push(marker);
   });
